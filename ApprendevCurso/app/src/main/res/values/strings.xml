@@ -3,4 +3,5 @@
     <string name="correo_electronico">Correo Electrónico</string>
     <string name="contrasena">Contraseña</string>
     <string name="nombre">Nombre</string>
+    <string name="apellido_paterno">Apellido Paterno</string>
 </resources>
