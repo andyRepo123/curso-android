@@ -1,17 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ApprendevCurso</string>
-    <string name="correo_electronico">Email</string>
-    <string name="contrasena">Password</string>
-    <string name="nombre">Name</string>
-    <string name="apellido_paterno">LastName</string>
+    <string name="correo_electronico">Correo Electrónico</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellido_paterno">Apellido Paterno</string>
     <string name="registro">Registro</string>
     <string name="registrarse">Registrarse</string>
     <string name="aceptado">Aceptar</string>
     <string name="rechazado">Rechazar</string>
     <string name="login_label">Iniciar Sesión</string>
     <string-array name="colors">
-        <item>Red</item>
-        <item>Blue</item>
-        <item>Green</item>
+        <item>Rojo</item>
+        <item>Azul</item>
+        <item>Verde</item>
     </string-array>
 </resources>
