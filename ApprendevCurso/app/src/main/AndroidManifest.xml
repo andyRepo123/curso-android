@@ -10,10 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ApprendevCurso">
         <activity
+            android:screenOrientation="fullSensor"
+            android:configChanges="orientation|screenSize"
             android:name=".ProfileActivity"
-            android:exported="true" />
-        <activity
-            android:name=".IntentActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".IntentActivity"
+            android:exported="true"/>
         <activity
             android:name=".MainActivity"
             android:exported="true" />

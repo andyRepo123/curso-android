@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dimen_12">18dp</dimen>
+    <dimen name="height_button_dimen_size">40dp</dimen>
+    <dimen name="text_size_12">12sp</dimen>
+</resources>

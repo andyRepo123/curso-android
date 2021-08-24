@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/option1"
+        style="@style/MyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/height_button_dimen_size"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@id/option2"
+        android:text="Opción 1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/option2"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/height_button_dimen_size"
+        android:layout_alignParentEnd="true"
+        style="@style/MyButton2"
+        android:layout_marginStart="@dimen/dimen_12"
+        android:layout_marginTop="@dimen/dimen_12"
+        android:layout_marginEnd="@dimen/dimen_12"
+        android:layout_marginBottom="@dimen/dimen_12"
+        android:text="opcion 2" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/option3"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/height_button_dimen_size"
+        android:layout_below="@id/option1"
+        android:layout_alignParentStart="true"
+        android:text="opcion 3" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/option4"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/height_button_dimen_size"
+        android:layout_below="@id/option3"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:text="opcion 4" />
+</RelativeLayout><!--
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Button 1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Button 2" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Button 3" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Button 4" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Button 5" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.constraintlayout.widget.ConstraintLayout>-->

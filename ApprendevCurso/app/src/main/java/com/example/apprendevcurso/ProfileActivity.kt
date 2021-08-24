@@ -1,41 +1,53 @@
 package com.example.apprendevcurso
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.example.apprendevcurso.profile.Profile
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.example.apprendevcurso.profile.ProfileFragment
 
 class ProfileActivity : AppCompatActivity() {
+    private val profileFragment = ProfileFragment()
+    private val mainFragment = MainFragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-        val profile = intent.getParcelableExtra<Profile>("Profile")
-        Log.d(
-            ProfileActivity::class.java.simpleName,
-            "profileId = ${profile?.profileId}"
-        )
-        Log.d(
-            ProfileActivity::class.java.simpleName,
-            "userName = ${profile?.userName}"
-        )
-        Log.d(
-            ProfileActivity::class.java.simpleName,
-            "name = ${profile?.name}"
-        )
-        Log.d(
-            ProfileActivity::class.java.simpleName,
-            "lastName = ${profile?.lastName}"
-        )
-        Log.d(
-            ProfileActivity::class.java.simpleName,
-            "userDescription = ${profile?.userDescription}"
-        )
+        loadFragment(profileFragment)
+        replaceFragment(mainFragment)
+        removeFragment(mainFragment)
+    }
 
-        /**
-         * Van asignar cada valor del Profile en un TextView deben ser un total
-         * de 5 TextViews
-         * Id Perfil: 1
-         * Nombre de usuario: Andy
-         */
+    fun loadFragment(fragment: Fragment) {
+        Log.d(
+            ProfileActivity::class.java.simpleName,
+            "Fragment 1")
+        supportFragmentManager.beginTransaction()
+            .add(
+                R.id.frameContainer,
+                fragment,
+                fragment::class.java.simpleName
+            )
+            .commit()
+    }
+
+    fun replaceFragment(fragment: Fragment) {
+        Log.d(
+            ProfileActivity::class.java.simpleName,
+            "Fragment 2")
+        supportFragmentManager.beginTransaction()
+            .replace(
+                R.id.frameContainer,
+                fragment,
+                fragment::class.java.simpleName
+            )
+            .addToBackStack(null)
+            .commit()
+    }
+
+    fun removeFragment(fragment: Fragment) {
+        Log.d(
+            ProfileActivity::class.java.simpleName,
+            "Fragment 3")
+        supportFragmentManager.beginTransaction().remove(fragment).commit()
     }
 }

@@ -4,15 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".IntentActivity">
+    tools:context=".MainFragment">
 
     <com.google.android.material.button.MaterialButton
         android:layout_width="0dp"
-        android:layout_height="@dimen/height_button_dimen_size"
-        android:layout_margin="@dimen/dimen_12"
-        android:onClick="navigateToWebApp"
+        android:layout_height="70dp"
         android:text="Click me"
-        android:textSize="@dimen/text_size_12"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
