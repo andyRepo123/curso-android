@@ -4,4 +4,9 @@
     <string name="contrasena">Contraseña</string>
     <string name="nombre">Nombre</string>
     <string name="apellido_paterno">Apellido Paterno</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="movies_label">Peliculas</string>
 </resources>
