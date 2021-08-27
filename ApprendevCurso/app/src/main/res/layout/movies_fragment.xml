@@ -8,20 +8,14 @@
         android:layout_height="match_parent"
         tools:context=".catalogo.ui.movies.MoviesFragment">
 
-        <TextView
-            android:id="@+id/info"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/topRatedVideos"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hello"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageDummy"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/info" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="20"
+            tools:listitem="@tools:sample/avatars" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

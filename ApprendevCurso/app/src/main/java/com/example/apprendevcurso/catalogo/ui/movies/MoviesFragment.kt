@@ -8,16 +8,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.apprendevcurso.R
 import com.example.apprendevcurso.catalogo.factory.HasMoviesFactory
 import com.example.apprendevcurso.catalogo.factory.MoviesFactoryImpl
+import com.example.apprendevcurso.catalogo.ui.movies.adapters.MoviesAdapter
 import com.example.apprendevcurso.catalogo.ui.movies.viewstate.MoviesState
 import com.example.apprendevcurso.databinding.MoviesFragmentBinding
-import com.squareup.picasso.Picasso
 
 class MoviesFragment : Fragment() {
     private lateinit var viewModel: MoviesViewModel
     private lateinit var binding: MoviesFragmentBinding
+    private val moviesAdapter: MoviesAdapter by lazy {
+        MoviesAdapter()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,10 +32,6 @@ class MoviesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpObservable()
-        Picasso.with(requireContext())
-            .load("https://image.tmdb.org/t/p/w342/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg")
-            .error(context?.resources?.getDrawable(R.drawable.ic_launcher_background))
-            .into(binding.imageDummy)
     }
 
     fun setUpObservable() {
@@ -44,10 +42,11 @@ class MoviesFragment : Fragment() {
                     Log.d(MoviesFragment::class.java.simpleName, "setUpObservable() Loading")
                 }
                 is MoviesState.MovieSuccessfully -> {
-                    Log.d(
-                        MoviesFragment::class.java.simpleName,
-                        "setUpObservable() MovieSuccessfully size " + it.videos.size
-                    )
+                    moviesAdapter.submitList(it.videos)
+                    moviesAdapter.notifyDataSetChanged()
+                    if (binding.topRatedVideos.adapter == null) {
+                        binding.topRatedVideos.adapter = moviesAdapter
+                    }
                 }
                 is MoviesState.MovieError -> {
                     Log.d(MoviesFragment::class.java.simpleName, "setUpObservable() MovieError")
