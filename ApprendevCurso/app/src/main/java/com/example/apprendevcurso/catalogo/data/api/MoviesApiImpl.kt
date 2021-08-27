@@ -9,7 +9,7 @@ import io.reactivex.Single
 
 class MoviesApiImpl(private val moviesServices: MoviesServices) : MoviesApi {
     override fun getTopRated(page: String): Single<List<VideoEntity>> =
-        moviesServices.getTopRated(page, BuildConfig.APIKEY).map { getTopRatedResponse ->
+        moviesServices.getTopRated(page.toInt(), BuildConfig.APIKEY).map { getTopRatedResponse ->
             return@map getTopRatedResponse
                 .results
                 .map {

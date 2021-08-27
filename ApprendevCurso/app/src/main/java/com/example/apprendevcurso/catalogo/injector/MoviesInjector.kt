@@ -1,6 +1,7 @@
 package com.example.apprendevcurso.catalogo.injector
 
 import com.example.apprendevcurso.BuildConfig
+import com.example.apprendevcurso.catalogo.data.MoviesServices
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -25,4 +26,6 @@ class MoviesInjector {
             .client(buildHttpClient())
             .build()
     }
+
+    val moviesServices: MoviesServices by lazy { retrofit.create(MoviesServices::class.java) }
 }

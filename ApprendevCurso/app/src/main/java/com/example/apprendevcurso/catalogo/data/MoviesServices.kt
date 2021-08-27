@@ -9,7 +9,7 @@ interface MoviesServices {
     @GET("movie/top_rated")
     fun getTopRated(
         @Query("page")
-        page: String,
+        page: Int,
         @Query("api_key")
         key: String
     ): Single<GetTopRatedResponse>
