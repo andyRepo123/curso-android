@@ -1,86 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/option1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_toLeftOf="@id/option2"
-        android:text="Opción 1" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/option2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:text="opcion 2" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/option3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@id/option1"
-        android:text="opcion 3" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/option4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/option3"
-        android:text="opcion 4" />
-</RelativeLayout><!--
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:context=".ProfileActivity">
 
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/foodLabel"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="Button 1" />
+            android:layout_margin="12dp"
+            android:text="Nombre de la comida: "
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Nombre de la comida: " />
 
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/food"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="Button 2" />
+            android:layout_marginTop="12dp"
+            app:layout_constraintLeft_toLeftOf="@id/foodLabel"
+            app:layout_constraintRight_toRightOf="@id/foodLabel"
+            app:layout_constraintTop_toBottomOf="@id/foodLabel"
+            tools:text="Pollo" />
 
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/priceLabel"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="Button 3" />
+            android:layout_margin="12dp"
+            android:text="El precio es: "
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/food"
+            tools:text="El precio es: " />
 
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/price"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="Button 4" />
-
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="Button 5" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-</androidx.constraintlayout.widget.ConstraintLayout>-->
+            android:layout_marginTop="12dp"
+            app:layout_constraintLeft_toLeftOf="@id/priceLabel"
+            app:layout_constraintRight_toRightOf="@id/priceLabel"
+            app:layout_constraintTop_toBottomOf="@id/priceLabel"
+            tools:text="10.50" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -3,6 +3,7 @@
     package="com.example.apprendevcurso">
 
     <application
+        android:name=".EatsApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -10,10 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ApprendevCurso">
         <activity
-            android:name=".ProfileActivity"
-            android:exported="true" />
-        <activity
-            android:name=".IntentActivity"
+            android:name=".room_database.ui.FoodActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +19,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".food.EatsActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".IntentActivity"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />
