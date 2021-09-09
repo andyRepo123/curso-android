@@ -6,5 +6,6 @@
     <string name="apellido_paterno">Apellido Paterno</string>
     <string name="facebook_app_id">856455854990810</string>
     <string name="fb_login_protocol_scheme">fb856455854990810</string>
+    <string name="prefs_file">com.example.apprendevcurso</string>
 
 </resources>

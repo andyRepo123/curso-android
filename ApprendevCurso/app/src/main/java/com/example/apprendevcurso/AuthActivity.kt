@@ -1,5 +1,6 @@
 package com.example.apprendevcurso
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -26,6 +27,16 @@ class AuthActivity : AppCompatActivity() {
         notification()
         firebaseAnalytics()
         setUp()
+        session()
+    }
+
+    private fun session() {
+        val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
+        val email = prefs.getString("email", null)
+        val provider = prefs.getString("provider", null)
+        if (email != null && provider != null) {
+            showProfile(email, ProviderType.valueOf(provider))
+        }
     }
 
     private fun setUp() {
@@ -97,6 +108,11 @@ class AuthActivity : AppCompatActivity() {
                 }
             )
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        callbackManager.onActivityResult(requestCode, resultCode, data)
     }
 
     private fun showProfile(email: String, provider: ProviderType) {

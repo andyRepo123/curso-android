@@ -1,5 +1,6 @@
 package com.example.apprendevcurso
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.apprendevcurso.databinding.ActivityProfileBinding
@@ -19,11 +20,19 @@ class ProfileActivity : AppCompatActivity() {
         _binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
         intent.extras.let {
-            setUp(
-                it?.getString("email") ?: "",
-                it?.getString("provider") ?: ""
-            )
+            val email = it?.getString("email") ?: ""
+            val provider = it?.getString("provider") ?: ""
+            saveCredentials(email, provider)
         }
+    }
+
+    private fun saveCredentials(email: String, provider: String) {
+        val prefs =
+            getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
+        prefs.putString("email", email)
+        prefs.putString("provider", provider)
+        prefs.apply()
+        setUp(email, provider)
     }
 
     private fun setUp(email: String, provider: String) {
@@ -31,6 +40,10 @@ class ProfileActivity : AppCompatActivity() {
         binding.emailText.text = email
         binding.providerText.text = provider
         binding.signoutButton.setOnClickListener {
+            val prefs =
+                getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
+            prefs.clear()
+            prefs.apply()
             FirebaseAuth.getInstance().signOut()
             if (provider == ProviderType.FACEBOOK.name) {
                 LoginManager.getInstance().logOut()
