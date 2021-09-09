@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "436751470117",
+    "project_id": "apprendevapp",
+    "storage_bucket": "apprendevapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:436751470117:android:877a0cdbcb3bbeb1e679cc",
+        "android_client_info": {
+          "package_name": "com.example.apprendevcurso"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "436751470117-d6blv1n9sq8kun019djmbbi5orvme5ij.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAySqK3tXrVqFB_CyQXp8TTLwVdEfpW70s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "436751470117-d6blv1n9sq8kun019djmbbi5orvme5ij.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
