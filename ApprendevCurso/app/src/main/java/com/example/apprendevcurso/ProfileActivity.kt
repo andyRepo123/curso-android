@@ -3,9 +3,15 @@ package com.example.apprendevcurso
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.apprendevcurso.databinding.ActivityProfileBinding
 import com.facebook.login.LoginManager
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.FirebaseFirestore
 
 enum class ProviderType {
     BASIC,
@@ -15,6 +21,10 @@ enum class ProviderType {
 class ProfileActivity : AppCompatActivity() {
     private var _binding: ActivityProfileBinding? = null
     private val binding get() = _binding!!
+    private val dbFireStore = FirebaseFirestore.getInstance()
+    private val dbRealTime =
+        FirebaseDatabase.getInstance().getReference(User::class.java.simpleName)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityProfileBinding.inflate(layoutInflater)
@@ -50,5 +60,108 @@ class ProfileActivity : AppCompatActivity() {
             }
             onBackPressed()
         }
+
+        binding.saveUserButton.setOnClickListener {
+            dbRealTime.push().setValue(
+                User(
+                    email,
+                    provider,
+                    binding.phoneText.text.toString(),
+                    binding.addressText.text.toString()
+                )
+            )
+            /**
+             * Firestore
+             */
+            /*dbFireStore.collection("users").document(email).set(
+                hashMapOf(
+                    "provider" to provider,
+                    "address" to binding.addressText.text.toString(),
+                    "phone" to binding.phoneText.text.toString()
+                )
+            )*/
+        }
+
+        val users = mutableListOf<User>()
+        binding.getUserButton.setOnClickListener {
+            dbRealTime.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        users.clear()
+                        snapshot.children.map {
+                            val user = it.getValue(User::class.java)
+                            user?.id = it.key.toString()
+                            users.add(user ?: User())
+                        }
+                    }
+                    Toast.makeText(
+                        binding.getUserButton.context,
+                        "El total de usuario es: ${users.size}",
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
+
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(binding.getUserButton.context, error.message, Toast.LENGTH_SHORT)
+                        .show()
+                }
+
+            })
+            /**
+             * RealTime Updated
+             */
+            /*val users: HashMap<String, Any> = HashMap()
+            users["email"] = email
+            users["provider"] = provider
+            users["phone"] = binding.phoneText.text.toString()
+            users["address"] = binding.addressText.text.toString()
+
+            dbRealTime.child("-MjCRB-mUDZAsJsUTIId").updateChildren(users)
+                .addOnSuccessListener {
+                    Toast.makeText(this, "La actualización fue exitosa", Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener {
+                    Toast.makeText(this, "La actualización no fue exitosa", Toast.LENGTH_SHORT)
+                        .show()
+                }*/
+            /**
+             * FireStore
+             */
+            /*dbFireStore.collection("users").document(email).get()
+                .addOnSuccessListener {
+                    binding.addressText.setText(it.get("address").toString())
+                    binding.phoneText.setText(it.get("phone").toString())
+                }*/
+            /*dbFireStore.collection("users").get().addOnSuccessListener {
+                it.documents.map { users ->
+                    users.get("address")
+                    users.get("phone")
+                    users.id
+                }
+            }*/
+        }
+
+        binding.deleteUserButton.setOnClickListener {
+            dbRealTime.child("-MjCRB-mUDZAsJsUTIId").removeValue()
+                .addOnSuccessListener {
+                    Toast.makeText(this, "El usuario fue removido", Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+                }
+            /**
+             * FireStore
+             */
+            //dbFireStore.collection("users").document(email).delete()
+        }
     }
 }
+
+data class User(
+    val email: String? = "",
+    val provider: String? = "",
+    val phone: String? = "",
+    val address: String? = "",
+    var id: String = ""
+)
